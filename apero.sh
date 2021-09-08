@@ -1,10 +1,13 @@
 #!/bin/bash
-declare -a arr=("hey.mp3" "sheep.mp3" "cat.mp3")
+declare -a arr=("hey.mp3" "cough.mp3" "keyboard.mp3" "sheep.mp3" "cat.mp3")
 while true
 do	
-	osascript -e 'set Volume 2'
-	SOUND=$(($RANDOM % 3))
+	OLD=$(osascript -e 'set ovol to output volume of (get volume settings)')
+	osascript -e 'set volume output volume 50'
+
+	SOUND=$(($RANDOM % 5))
 	afplay ${arr[($SOUND)]}
+
+	osascript -e "set volume output volume $OLD"
 	sleep $((1 + $RANDOM % 5))
-	echo $(($RANDOM % 300))
 done
