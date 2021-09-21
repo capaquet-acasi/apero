@@ -9,5 +9,5 @@ do
 	afplay ${SOUND_LIST[($SOUND_INDEX)]}
 
 	osascript -e "set volume output volume $OLD"
-	sleep $((1 + $RANDOM % 600))
+	sleep $((1 + $RANDOM % 10))
 done
